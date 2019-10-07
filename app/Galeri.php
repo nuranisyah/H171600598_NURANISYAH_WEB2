@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Galeri extends Model
 {
-    protected $table ='Galeri'; 
-    
-    protected $fillable = [
-       'judul','users_id','kategori_artikel_id'
-    ];
+	protected $table="galeri";
+	protected $fillable=['nama','katerangan','path','users_id','kategori_galeri_id'];
+
+	protected $casts=[];
 }

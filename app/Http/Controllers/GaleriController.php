@@ -4,26 +4,35 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Galeri;
+use App\KategoriGaleri;
 
 class GaleriController extends Controller
 {
-    function index(){
-        $Galeri=Galeri::all();
-
-        return view('galeri.index',compact ('Galeri'));
-
-        }
- public function create()
- {
- 	$kategori_berita = kategori_galeri::pluck('nama', 'id');
-        return view('Galeri.create')->with('kategori_galeri', $kategori_galeri);
-  }
-
- public function store(Request $request)
+    public function index()
     {
-        $input = $request->all();
-        Galeri::create($input);
-        return redirect(route('Galeri.index'));
+        $Galeri = \App\Galeri::all();
+
+        return view('galeri.index',compact('Galeri'));    
     }
+    
+    public function show($id)
+    {
+        $Galeri = \App\Galeri::find($id);
+
+        return view('galeri.show',compact('Galeri'));    
     }
-}
+
+    public function create(){
+
+        $KategoriGaleri= \App\KategoriGaleri::pluck ('nama','id');
+
+        return view('galeri.create',compact('KategoriGaleri'));
+    }
+     public function store(Request $request){
+        $input=$request->all();
+       Galeri::create($input);
+       return redirect(route('galeri.index'));
+       
+    }
+    
+}  

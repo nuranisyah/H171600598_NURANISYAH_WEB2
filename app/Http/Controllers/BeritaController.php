@@ -4,33 +4,35 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Berita;
-Use App\kategori_berita;
-
+use App\KategoriBerita;
 
 class BeritaController extends Controller
 {
-    function index(){
-        $Berita=Berita::all();
-
-        return view('Berita.index',compact ('Berita'));
-
-            	}
- public function create()
- {
- 	$kategori_berita = kategori_berita::pluck('nama', 'id');
-        return view('Berita.create')->with('kategori_berita', $kategori_berita);
-  }
-
- public function store(Request $request)
+    public function index()
     {
-        $input = $request->all();
-        Berita::create($input);
-        return redirect(route('Berita.index'));
+        $Berita = \App\Berita::all();
+
+        return view('berita.index',compact('Berita'));    
     }
+    
     public function show($id)
     {
-        $Berita = Berita::find($id);
-        return view('Berita.show', compact('Berita'));
-    
+        $Berita = \App\Berita::find($id);
+
+        return view('berita.show',compact('Berita'));    
     }
-}
+
+    public function create(){
+
+        $KategoriBerita= \App\KategoriBerita::pluck ('nama','id');
+
+        return view('berita.create',compact('KategoriBerita'));
+    }
+     public function store(Request $request){
+        $input=$request->all();
+       Berita::create($input);
+       return redirect(route('berita.index'));
+       
+    }
+    
+}  

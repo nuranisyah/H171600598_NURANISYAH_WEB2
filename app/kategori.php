@@ -1,12 +1,12 @@
-<?php
-
+<?php 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use illuminate\notification\notifiable;
+use illuminate\Database\Eloquent\model;
 
-class kategori extends Model
+class kategori extends model
 {
-    protected $fillable = [
-        'user_id', 'nama', 'keterangan',
-    ];
+	protected $table = 'kategori';
+	protected $fillable = [
+		'name', 'keterangan', 'user_id',];
 }

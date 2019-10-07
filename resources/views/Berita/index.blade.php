@@ -1,42 +1,39 @@
-@extends('layouts.app')
+@extends ('layouts.app')
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header text-center">Dashboard</div>
-                <div class="card-body text-center">
-             
-<body >
-		<table border="1 ">
-		<tittle>Berita</tittle>
-			<tr>
-				<td>Id</td>
-				<td>Judul</td>
-				<td>Isi</td>
-				<td>Users id</td>
-				<td>Kategori_berita_d</td>
-
-
-              </div>
-             </div>
-            </div>
-
-
-			</tr>
-		@foreach($Berita as $item)
-		<tr>
-			<td>{!! $item->id !!}</td>
-			<td>{!! $item->judul !!}</td>
-			<td>{!! $item->isi !!}</td>
-			<td>{!! $item->users_id !!}</td>
-			<td>{!! $item->kategori_berita_id !!}</td>
-		</tr>
-	
-		@endforeach
-		
-		</table>
+	<div class="row justify-content-center">
+		<div class="col-md-8">
+			<div class="card">
+				<div class="card-header">List Berita</div>
+				<div class="card-body">
+				<a href="{!! route('berita.create') !!}" class="btn btn-primary">Tambah Data </a>
+				<table border="2">
+				<tr>
+					<td> ID </td>
+					<td> Judul </td>
+					<td> Isi </td>
+					<td> User Id </td>
+					<td> Create </td>
+					<td> Aksi </td>
+				</tr>
+@foreach ($Berita as $item)
+<tr>
+					<td> {!! $item-> id !!} </td>
+					<td> {!! $item-> judul!!} </td>
+					<td> {!! $item-> isi !!} </td>
+					<td> {!! $item-> users_id !!} </td>
+					<td> {!! $item-> created_at !!} </td>
+					<td>
+						<a href="{!! route('berita.show',[$item->id]) !!}" class="btn btn-sm btn-success"> Lihat </a>
+					</td>
+</tr>
+@endforeach 	
+				</table>	
+				</div>
+			</div>
 		</div>
+	</div>
+</div>
 
-		@endsection
+@endsection

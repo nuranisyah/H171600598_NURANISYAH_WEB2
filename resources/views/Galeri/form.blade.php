@@ -1,56 +1,81 @@
+
 @csrf
-<div class="form-group row">
-    <label for="judul" class="col-md-4 col-form-label text-md-right">{{ __('gelar') }}</label>
 
-    <div class="col-md-6">
-        <input id="judul" type="text" class="form-control @error('judul') is-invalid @enderror" name="judul" required autofocus>
+                        <div class="form-group row">
+                            <label for="nama" class="col-md-2 col-form-label text-md-right">{{ __('Nama') }}</label>
 
-        @error('judul')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-</div>
+                            <div class="col-md-10">
+                                <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}" required autocomplete="nama" autofocus>
 
-<div class="form-group row">
-    <label for="isi" class="col-md-4 col-form-label text-md-right">{{ __('konten') }}</label>
+                                @error('nama')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
-    <div class="col-md-6">
-        {!! Form::textarea('isi', null, ['class' => 'form-control', 'name' => 'isi']) !!}
-    </div>
-</div>
+                        <div class="form-group row">
+                            <label for="kategori_galeri_id" class="col-md-2 col-form-label text-md-right">{{ __('Galeri') }}</label>
+                            <div class="col-md-10">
+                            {!! Form::select('kategori_galeri_id',$KategoriGaleri,null,["class"=>"form-control","required"]); !!}
 
-<div class="form-group row">
-    <label for="kategori_galeri_id" class="col-md-4 col-form-label text-md-right">{{ __('galeri_kategori') }}</label>
+                                @error('kategori_galeri
+                                _id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
-    <div class="col-md-6">
-        {!! Form::select('kategori_galeri_id', $kategori_galeri, null, ['class' => 'form-control']) !!}
-    </div>
-</div>
+                        <div class="form-group row">
+                            <label for="path" class="col-md-2 col-form-label text-md-right">{{ __('Path') }}</label>
 
-<div class="form-group row">
-    <input id="users_id" type="hidden" class="form-control @error('users_id') is-invalid @enderror" name="users_id" value="{{ Auth::id() }}" required>
+                        <div class="col-md-10">
+                                <input id="path" type="text" class="form-control @error('path') is-invalid @enderror" name="path" value="{{ old('path') }}" required autocomplete="path" autofocus>
 
-    @error('title')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-</div>
+                                @error('path')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
-<div class="form-group row mb-0">
-    <div class="col-md-6 offset-md-4">
-        <button type="submit" class="btn btn-primary">
-            {{ __('Done') }}
-        </button>
-        <a href="{!! route('Galeri.index') !!}" class="btn btn-danger">
-            Cancel
-        </a>
-    </div>
-</div>
+                        <div class="form-group row">
+                            <label for="keterangan" class="col-md-2 col-form-label text-md-right">{{ __('Keterangan') }}</label>
+                            <div class="col-md-10">
+                            {!! Form::textarea('keterangan',null,["class"=>"form-control"]); !!}
 
-<!--script src="https://cdn.ckeditor.com/4.13.0/basic/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace( 'isi' );
-</script-->
+                                @error('keterangan')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <input id="users_id" type="hidden" class="form-control @error('users_id') is-invalid @enderror" name="users_id" value="{{ Auth::id() }}" required autocomplete="users_id">
+
+                                @error('users_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Simpan') }}
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-6">
+                                <a href="{!! route('galeri.index') !!}" class="btn btn-danger">Batal</a>
+                            </div>
+                        </div>

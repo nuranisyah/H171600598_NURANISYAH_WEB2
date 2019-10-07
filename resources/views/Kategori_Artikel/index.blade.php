@@ -1,43 +1,36 @@
-@extends('layouts.app')
+@extends ('layouts.app')
 
 @section('content')
-
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header text-center">Kategori Artikel</div>
-                <div class="card-body text-center">
-				
-             
-<body >
-		<table border="1 ">
-		
-			<tr>
-				<td>Id</td>
-				<td>Nama</td>
-				<td>Users id</td>
-				<td>Aksi</td>
-
-
-              </div>
-             </div>
-            </div>
-
-
-			</tr>
-		@foreach($KategoriArtikel as $item)
-		<tr>
-			<td>{!! $item->id !!}</td>
-			<td>{!! $item->nama !!}</td>
-			<td>{!! $item->users_id !!}</td>
-			
-			<td><a href="{!! route('Kategori_Artikel.show',[$item-> id]) !!}" button class="btn btn -sm btn-success " >Lihat Detail</a></td>
-		</tr>
-	
-		@endforeach
-		
-		</table>
+	<div class="row justify-content-center">
+		<div class="col-md-8">
+			<div class="card">
+				<div class="card-header">list kategori artikel</div>
+				<div class="card-body">
+				<a href="{!! route('kategori_artikel.create') !!}" class="btn btn-primary">Tambah Data </a>
+				<table border="1"><tr>
+					<td> ID </td>
+					<td> Nama </td>
+					<td> User ID </td>
+					<td> Kategori Artikel Id </td>
+					<td> Aksi </td>
+				</tr>
+@foreach ($KategoriArtikel as $item)
+<tr>
+					<td> {!! $item-> id !!} </td>
+					<td> {!! $item-> nama !!} </td>
+					<td> {!! $item-> users_id !!} </td>
+					<td> {!! $item-> kategori_artikel_id !!} </td>
+					<td>
+						<a href="{!! route('kategori_artikel.show',[$item->id]) !!}" class="btn btn-sm btn-success"> Lihat </a>
+					</td>
+</tr>
+@endforeach 	
+				</table>	
+				</div>
+			</div>
 		</div>
+	</div>
+</div>
 
-		@endsection
+@endsection

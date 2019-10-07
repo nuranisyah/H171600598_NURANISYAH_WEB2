@@ -19,6 +19,6 @@
 		<button type="submit" class="btn btn-primary">
 			{{__('Simpan Data')}}
 		</button>
-		<a href="{!! route('kategori_galeri.index') !!}" class="btn btn-sm btn-danger"> Kembali </a>
+		<a href="{!! route('kategori_berita.index') !!}" class="btn btn-sm btn-danger"> Kembali </a>
 	</div>
 </div>
