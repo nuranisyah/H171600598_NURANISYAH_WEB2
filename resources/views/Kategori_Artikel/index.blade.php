@@ -12,7 +12,7 @@
 					<td> ID </td>
 					<td> Nama </td>
 					<td> User ID </td>
-					<td> Kategori Artikel Id </td>
+					<td> Create </td>
 					<td> Aksi </td>
 				</tr>
 @foreach ($KategoriArtikel as $item)
@@ -20,9 +20,14 @@
 					<td> {!! $item-> id !!} </td>
 					<td> {!! $item-> nama !!} </td>
 					<td> {!! $item-> users_id !!} </td>
-					<td> {!! $item-> kategori_artikel_id !!} </td>
+					<td> {!! $item-> created_at !!} </td>
 					<td>
 						<a href="{!! route('kategori_artikel.show',[$item->id]) !!}" class="btn btn-sm btn-success"> Lihat </a>
+						<a href="{!! route('kategori_artikel.edit',[$item->id]) !!}" class="btn btn-sm btn-success"> Ubah </a>
+
+						{!! Form::open(['route' => ['kategori_artikel.destroy', $item->id], 'method' => 'delete']) !!}
+                        	{!! Form::submit('Delete', ['class' => 'btn btn-sm btn-secondary']) !!}
+                        {!! Form::close() !!}
 					</td>
 </tr>
 @endforeach 	

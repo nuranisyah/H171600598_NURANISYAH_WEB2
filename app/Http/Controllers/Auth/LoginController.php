@@ -21,7 +21,7 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-    protected function validator(Request $request)
+    protected function validateLogin(Request $request)
     {
         $request->validate([
             $this->username() => 'required|string',
@@ -29,17 +29,9 @@ class LoginController extends Controller
             'captcha' => 'required|captcha',    
         ]);
     }
-
-    protected function credentials(Request $request)
-    {
-        return $request -> only($this->username(),'password');
+    public function username(){
+        return 'kontak';
     }
-
-    public function refreshCaptcha()
-    {
-        return response()->json(['captcha'=> captcha_img()]);
-    }
-
    
     use AuthenticatesUsers;
 

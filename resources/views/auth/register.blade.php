@@ -39,6 +39,20 @@
                             </div>
                         </div>
 
+                         <div class="form-group row">
+                            <label for="kontak" class="col-md-4 col-form-label text-md-right">{{ __('kontak') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="kontak" type="int" class="form-control @error('kontak') is-invalid @enderror" name="kontak" value="{{ old('kontak') }}" required autocomplete="kontak">
+
+                                @error('kontak')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -60,6 +74,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+                        
                         <div class="form-group row{{ $errors->has('captcha') ? ' has-error' : '' }}">
         <label for="password" class="col-md-4 col-form-label text-md-right">Captcha</label>
         <div class="col-md-6">
